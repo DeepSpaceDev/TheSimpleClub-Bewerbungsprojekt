@@ -5,7 +5,7 @@
 }
 
 html, body {
-  width: 100vw;
+  width: 100%;
   min-height: 100vh;
   margin: 0;
   padding: 0;
@@ -21,8 +21,8 @@ body header {
   padding: 16px;
   background-color: var(--primary-color);
   color: #fff;
-  height: 1.7em;
-  font-size: 20pt;
+  font-size: 1.7em;
+  line-height: 1.7em;
   box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14),
               0 1px 10px 0 rgba(0, 0, 0, 0.12),
               0 2px 4px -1px rgba(0, 0, 0, 0.4);
@@ -47,6 +47,14 @@ body .details {
 
 body .details .info {
   display: flex;
+  margin: 0 64px;
+}
+
+body .details .info .view-count {
+  flex: 1;
+  font-size: 1.3em;
+  margin: 1.5em 1em;
+  font-weight: bold;
 }
 
 body .details .image-gallery {
@@ -65,21 +73,36 @@ body .details .image-gallery img {
   border-radius: 2px;
 }
 
-body .details .info .view-count {
-  flex: 1;
-}
-
 button {
   background-color: var(--primary-color);
   text-transform: uppercase;
   color: #fff;
   border-radius: 2px;
   border: none;
-  font-size: 16px;
-  padding: 0.9em 0.7em;
+  font-size: 1.05em;
+  padding: 1em 0.7em;
   margin: 1.5em 1em;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
               0 1px 5px 0 rgba(0, 0, 0, 0.12),
               0 3px 1px -2px rgba(0, 0, 0, 0.2);
   cursor: pointer;
+}
+
+#ytplayer{
+	height: 550px;
+	width: 978px;
+}
+
+@media only screen and (max-width: 1000px) {
+	/* mobile */
+	#ytplayer{
+		width: 100%;
+		padding: 0;
+	}
+
+	body header{
+		line-height: 2.2em;
+		font-size: 2.2em;
+		text-align: center;
+	}
 }
