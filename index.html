@@ -7,6 +7,8 @@
     <link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">
     <!--main style sheet-->
     <link href="styles.css" rel="stylesheet">
+    <!--javascript apis-->
+    <script type="text/javascript" src="bower_components/fetch/fetch.js"></script>
   </head>
   <body>
     <header>Arrays (Theorie) - Statische Datenstrukturen</header>
@@ -28,7 +30,7 @@
             player = new YT.Player('ytplayer', {
               height: '450', //9
               width: '800', //16
-              videoId: 'lfIUilgq4qo', //video id
+              videoId: videoId, //video id --> vars main script
               playerVars: {
                 autoplay: 1, //autoplay video
                 fs: 1, //allow fullscreen
@@ -45,7 +47,8 @@
     <div class="details">
       <!-- TODO-dennis: details here -->
       <div class="info">
-        <div class="view-count"><!-- TODO-sese: insert view count --></div>
+        <!--Displayed via API-Call (JS)-->
+        <div class="view-count"></div>
         <button>Favorisieren</button>
       </div>
     </div>
