@@ -13,6 +13,11 @@ var styles = ['background: #3f51b5',
 	].join(';');
 console.info("%c Copyright 2016 DeepSpace Development", styles);
 
+var scrollingState = STATE_NOT_SCROLLING;
+var STATE_NOT_SCROLLING = 0;
+var STATE_SCROLLING = 1;
+var hasScrolled = false;
+
 var pswpElement = document.querySelectorAll('.pswp')[0];
 
 // build items array
@@ -59,15 +64,7 @@ var items = [
     }
 ];
 
-// define options (if needed)
-var options = {
-    // optionName: 'option value'
-    // for example:
-    index: 0 // start at first slide
-};
-
-// Initializes and opens PhotoSwipe
-var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
+var imageGallery = document.querySelector('.image-gallery');
 
 /* Start main javascript */
 //vars
@@ -77,6 +74,7 @@ var apiKey = "AIzaSyAzH9gS5uv6jhzeSMp4oGtMrlxH2id_JtE";
 //functions
 function init(){
 	setViewCount();
+  setUpHandlers();
 }
 
 function setViewCount(){
@@ -97,6 +95,40 @@ function setViewCount(){
 				document.querySelector(".view-count").innerHTML = viewCount + " Aufrufe";
 			}
 		});
+}
+
+function setUpHandlers() {
+  imageGallery.addEventListener('mousedown', onImageGalleryDown);
+  imageGallery.addEventListener('click', onImageGalleryClick);
+}
+
+function onImageGalleryDown(e) {
+  scrollingState = STATE_SCROLLING;
+  hasScrolled = false;
+  imageGallery.addEventListener('mousemove', onImageGalleryMove);
+  window.addEventListener('mouseup', onImageGalleryUp, {once: true});
+}
+
+function onImageGalleryMove(e) {
+  var dX = e.movementX;
+  if (Math.abs(dX) > 0) hasScrolled = true;
+  imageGallery.scrollLeft -= dX;
+}
+
+function onImageGalleryUp(e) {
+  imageGallery.removeEventListener('mousemove', onImageGalleryMove);
+}
+
+function onImageGalleryClick(e) {
+  var children = [].slice.call(imageGallery.children);
+  var index = children.indexOf(e.target);
+  if (hasScrolled) return;
+  // Initializes and opens PhotoSwipe
+  var pswp = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+    index: index,
+    shareEl: false
+  });
+  pswp.init();
 }
 
 // start init
