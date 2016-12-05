@@ -5,3 +5,12 @@ html, body {
   padding: 0;
   font-family: 'Titillium Web', sans-serif;
 }
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+body > details {
+  flex: 1;
+}
