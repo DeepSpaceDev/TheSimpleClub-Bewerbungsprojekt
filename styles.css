@@ -16,6 +16,7 @@ html, body {
 body {
   display: flex;
   flex-direction: column;
+  background: var(--light-theme-background);
 }
 
 body header {
@@ -40,7 +41,6 @@ body main {
 body .yt-container {
   display: flex;
   justify-content: center;
-  background: var(--light-theme-background);
 }
 
 body .details {
@@ -51,7 +51,10 @@ body .details {
 
 body .details .info {
   display: flex;
-  margin: 0 64px;
+  width: 978px; /*video width*/
+  margin: 16px;
+  align-self: center;
+  background: #fff;
 }
 
 body .details .info .view-count {
@@ -97,15 +100,32 @@ button {
 	width: 978px;
 }
 
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 1100px) {
 	/* mobile */
 	#ytplayer{
-		width: 100%;
+		width: 100vw;
 		padding: 0;
 	}
+
   body header {
     font-size: 18px;
     height: 56px;
+  }
+
+	body .details .info {
+	  display: flex;
+	  width: 100%;
+	  margin: 0;
+	}
+
+  body .details .image-gallery {
+    margin: 32px 0;
+    padding: 0 16px;
+  }
+
+  body .details .image-gallery img {
+    max-height: 300px;
+    margin: 0 16px;
   }
 }
 
@@ -113,5 +133,10 @@ button {
 	/* mobile */
   body header {
     font-size: 14px;
+  }
+
+  body .details .image-gallery img {
+    max-height: 180px;
+    margin: 0 8px;
   }
 }
