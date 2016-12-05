@@ -2,11 +2,12 @@
   /* CSS custom properties (use: var(--custom-property);) */
   --primary-color: #5b81b2;
   --light-theme-background: #eee;
+  box-sizing: border-box;
 }
 
 html, body {
-  width: 100%;
   min-height: 100vh;
+  width: 100vw;
   margin: 0;
   padding: 0;
   font-family: 'Titillium Web', sans-serif;
@@ -18,11 +19,13 @@ body {
 }
 
 body header {
-  padding: 16px;
+  width: 100%;
+  padding: 0 16px;
   background-color: var(--primary-color);
   color: #fff;
-  font-size: 1.7em;
-  line-height: 1.7em;
+  font-size: 20px;
+  height: 64px;
+  line-height: 64px;
   box-shadow: 0 4px 5px 0 rgba(0, 0, 0, 0.14),
               0 1px 10px 0 rgba(0, 0, 0, 0.12),
               0 2px 4px -1px rgba(0, 0, 0, 0.4);
@@ -30,6 +33,7 @@ body header {
 }
 
 body main {
+  flex: 1;
   overflow-y: auto;
 }
 
@@ -52,8 +56,8 @@ body .details .info {
 
 body .details .info .view-count {
   flex: 1;
-  font-size: 1.3em;
-  margin: 1.5em 1em;
+  font-size: 18px;
+  margin: 16px;
   font-weight: bold;
 }
 
@@ -79,9 +83,9 @@ button {
   color: #fff;
   border-radius: 2px;
   border: none;
-  font-size: 1.05em;
-  padding: 1em 0.7em;
-  margin: 1.5em 1em;
+  font-size: 18px;
+  padding: 8px;
+  margin: 16px;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
               0 1px 5px 0 rgba(0, 0, 0, 0.12),
               0 3px 1px -2px rgba(0, 0, 0, 0.2);
@@ -99,10 +103,15 @@ button {
 		width: 100%;
 		padding: 0;
 	}
+  body header {
+    font-size: 18px;
+    height: 56px;
+  }
+}
 
-	body header{
-		line-height: 2.2em;
-		font-size: 2.2em;
-		text-align: center;
-	}
+@media only screen and (max-width: 600px) {
+	/* mobile */
+  body header {
+    font-size: 14px;
+  }
 }
