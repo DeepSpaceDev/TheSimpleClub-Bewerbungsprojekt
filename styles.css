@@ -44,6 +44,26 @@ body .yt-container {
   justify-content: center;
 }
 
+body .countdown {
+  position: absolute;
+  right: 0;
+  top: 72px;
+  padding: 8px 24px 8px 32px;
+  background: #D50000;
+  color: #fff;
+  border-radius: 4px 0px 0px 16px;
+  transition: all ease-out 0.7s;
+  opacity: 1;
+  transform: none;
+  will-change: transform;
+  z-index: 2;
+}
+
+body .countdown.hidden {
+  opacity: 0;
+  transform: translateX(100%);
+}
+
 body .details {
   flex: 1;
   flex-direction: column;

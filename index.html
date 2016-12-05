@@ -63,9 +63,26 @@
                 fs: 1, //allow fullscreen
                 modestbranding: 1, //no youtube logo
                 rel: 0, //no videos reccomendations
-                showinfo: 0 //don't display infos such as video title
+                showinfo: 0, //don't display infos such as video title
+                enablejsapi: 1
               }
 
+            });
+            player.addEventListener('onStateChange', function(e) {
+              if (e.data === YT.PlayerState.ENDED) {
+                // Show next video count down
+                var countdown = document.querySelector('.countdown');
+                countdown.classList.remove('hidden');
+                var sec = 3;
+                var int = window.setInterval(function() {
+                  sec--;
+                  countdown.textContent = `In ${sec} Sekunden startet das nächste Video...`;
+                  if (sec <= 0) {
+                    window.clearInterval(int);
+                    window.location = 'https://www.thesimpleclub.de/kurs/544-datenstrukturen-video-87759';
+                  }
+                }, 1000);
+              }
             });
           }
         </script>
@@ -90,6 +107,7 @@
         </div>
       </div>
     </main>
+    <div class="countdown hidden">In 3 Sekunden startet das nächste Video...</div>
     <!-- Root element of PhotoSwipe. Must have class pswp. -->
     <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
 
