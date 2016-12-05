@@ -31,12 +31,12 @@ body header {
 
 body main {
   overflow-y: auto;
+  background: var(--light-theme-background);
 }
 
 body .yt-container {
   display: flex;
   justify-content: center;
-  background: var(--light-theme-background);
 }
 
 body .details {
@@ -47,13 +47,16 @@ body .details {
 
 body .details .info {
   display: flex;
-  margin: 0 64px;
+  width: 978px; /*video width*/
+  margin: 16px;
+  align-self: center;
+  background: #fff;
 }
 
 body .details .info .view-count {
   flex: 1;
   font-size: 1.3em;
-  margin: 1.5em 1em;
+  margin: 1.2em 1em;
   font-weight: bold;
 }
 
@@ -81,7 +84,7 @@ button {
   border: none;
   font-size: 1.05em;
   padding: 1em 0.7em;
-  margin: 1.5em 1em;
+  margin: 1em 1em;
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
               0 1px 5px 0 rgba(0, 0, 0, 0.12),
               0 3px 1px -2px rgba(0, 0, 0, 0.2);
@@ -93,10 +96,10 @@ button {
 	width: 978px;
 }
 
-@media only screen and (max-width: 1000px) {
+@media only screen and (max-width: 1100px) {
 	/* mobile */
 	#ytplayer{
-		width: 100%;
+		width: 100vw;
 		padding: 0;
 	}
 
@@ -104,5 +107,28 @@ button {
 		line-height: 2.2em;
 		font-size: 2.2em;
 		text-align: center;
+	}
+
+	body .details .info {
+	  display: flex;
+	  width: 100%;
+	  margin: 0;
+	  font-size: 1.8em;
+	}
+
+	body .details .info .view-count{
+		margin: 1.4em 1em;
+	}
+
+	button{
+		font-size: 1em;
+	}
+
+	body .details .image-gallery {
+	  margin: 16px 0;
+	}
+
+	body .details .image-gallery img {
+	  max-height: 400px;
 	}
 }
