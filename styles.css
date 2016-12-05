@@ -85,6 +85,7 @@ body .details .info .view-count {
   margin: 16px;
   font-weight: bold;
   color: #6c6c6c;
+  line-height: 37px;
 }
 
 body .details .image-gallery {
