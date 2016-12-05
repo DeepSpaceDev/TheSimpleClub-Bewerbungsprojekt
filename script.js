@@ -13,6 +13,62 @@ var styles = ['background: #3f51b5',
 	].join(';');
 console.info("%c Copyright 2016 DeepSpace Development", styles);
 
+var pswpElement = document.querySelectorAll('.pswp')[0];
+
+// build items array
+var items = [
+    {
+        src: 'images/image001.jpeg',
+        w: 600,
+        h: 400
+    },
+    {
+        src: 'images/image002.jpeg',
+        w: 600,
+        h: 400
+    },
+    {
+        src: 'images/image003.jpeg',
+        w: 600,
+        h: 400
+    },
+    {
+        src: 'images/image004.jpeg',
+        w: 600,
+        h: 400
+    },
+    {
+        src: 'images/image005.jpeg',
+        w: 600,
+        h: 400
+    },
+    {
+        src: 'images/image006.jpeg',
+        w: 600,
+        h: 400
+    },
+    {
+        src: 'images/image007.jpeg',
+        w: 600,
+        h: 400
+    },
+    {
+        src: 'images/image008.jpeg',
+        w: 600,
+        h: 400
+    }
+];
+
+// define options (if needed)
+var options = {
+    // optionName: 'option value'
+    // for example:
+    index: 0 // start at first slide
+};
+
+// Initializes and opens PhotoSwipe
+var gallery = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, options);
+
 /* Start main javascript */
 //vars
 var videoId = "lfIUilgq4qo";
@@ -24,7 +80,7 @@ function init(){
 }
 
 function setViewCount(){
-	//Fetch polyfill via 'bower install fetch' 
+	//Fetch polyfill via 'bower install fetch'
 	//https://github.com/github/fetch
 	fetch("https://www.googleapis.com/youtube/v3/videos?part=statistics&id=" + videoId + "&key=" + apiKey)
 		.then(function(response){
@@ -33,7 +89,7 @@ function setViewCount(){
 		}).then(function(json) {
 		    //json format provided by youtube api
 		    //https://developers.google.com/apis-explorer/#p/youtube/v3/
-		    var viewCount = json["items"][0]["statistics"]["viewCount"]; 
+		    var viewCount = json["items"][0]["statistics"]["viewCount"];
 
 			//Check if apicall was successfull
 			if(viewCount !== undefined){
