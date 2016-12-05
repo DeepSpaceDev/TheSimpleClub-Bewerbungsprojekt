@@ -1,6 +1,8 @@
 * {
+  /* CSS custom properties (use: var(--custom-property);) */
   --primary-color: #5b81b2;
 }
+
 html, body {
   width: 100vw;
   min-height: 100vh;
@@ -12,7 +14,6 @@ html, body {
 body {
   display: flex;
   flex-direction: column;
-
 }
 
 body > header {
