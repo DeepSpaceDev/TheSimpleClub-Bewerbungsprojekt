@@ -26,7 +26,17 @@
           var player;
           function onYouTubePlayerAPIReady() {
             player = new YT.Player('ytplayer', {
-              videoId: 'lfIUilgq4qo'
+              height: '450', //9
+              width: '800', //16
+              videoId: 'lfIUilgq4qo', //video id
+              playerVars: {
+                autoplay: 1, //autoplay video
+                fs: 1, //allow fullscreen
+                modestbranding: 1, //no youtube logo
+                rel: 0, //no videos reccomendations
+                showinfo: 0 //don't display infos such as video title
+              }
+              
             });
           }
         </script>
