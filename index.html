@@ -3,14 +3,37 @@
   <head>
     <meta charset="utf-8">
     <title>The SimpleClub</title>
-    <!-- font titillium web -->
+    <!--font titillium web-->
     <link href="https://fonts.googleapis.com/css?family=Titillium+Web" rel="stylesheet">
-    <!-- main style sheet -->
+    <!--main style sheet-->
     <link href="styles.css" rel="stylesheet">
   </head>
   <body>
     <header>Arrays (Theorie) - Statische Datenstrukturen</header>
-    <main><!-- TODO-sese: video inside here --></main>
+    <main>
+        <!--Start [ytplayer]-->
+        <div id="ytplayer"></div>
+    
+        <script>
+          // Load the IFrame Player API code asynchronously.
+          var tag = document.createElement('script');
+          tag.src = "https://www.youtube.com/player_api";
+          var firstScriptTag = document.getElementsByTagName('script')[0];
+          firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    
+          // Replace the 'ytplayer' element with an <iframe> and
+          // YouTube player after the API code downloads.
+          var player;
+          function onYouTubePlayerAPIReady() {
+            player = new YT.Player('ytplayer', {
+              height: '360',
+              width: '640',
+              videoId: 'lfIUilgq4qo'
+            });
+          }
+        </script>
+        <!--End [ytplayer]-->
+    </main>
     <div class="details">
       <!-- TODO-dennis: details here -->
       <div class="info">
