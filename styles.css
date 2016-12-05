@@ -36,10 +36,16 @@ body > main {
 
 body > .details {
   flex: 1;
+  flex-direction: column;
+  display: flex;
 }
 
 body > .details .info {
   display: flex;
+}
+
+body > .details .image-gallery {
+  flex: 1;
 }
 
 body > .details .info .view-count {
