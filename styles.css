@@ -46,6 +46,14 @@ body > .details .info {
 
 body > .details .image-gallery {
   flex: 1;
+  display: flex;
+  overflow-x: scroll;
+}
+
+body > .details .image-gallery img {
+  height: 100%;
+  max-height: 250px;
+  margin: 0 8px;
 }
 
 body > .details .info .view-count {
