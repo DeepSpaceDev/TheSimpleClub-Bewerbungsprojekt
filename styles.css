@@ -15,6 +15,7 @@ html, body {
 body {
   display: flex;
   flex-direction: column;
+  background: var(--light-theme-background);
 }
 
 body header {
@@ -31,7 +32,6 @@ body header {
 
 body main {
   overflow-y: auto;
-  background: var(--light-theme-background);
 }
 
 body .yt-container {
@@ -125,10 +125,12 @@ button {
 	}
 
 	body .details .image-gallery {
-	  margin: 16px 0;
+	  margin: 32px 0;
+	  padding: 0 16px;
 	}
 
 	body .details .image-gallery img {
 	  max-height: 400px;
+	  margin: 0 16px;
 	}
 }
