@@ -77,7 +77,7 @@
                 var sec = 3;
                 var int = window.setInterval(function() {
                   sec--;
-                  countdown.textContent = `In ${sec} Sekunden startet das nächste Video...`;
+                  countdown.textContent = `Nächstes Video in ... ${sec} Sekunden`;
                   if (sec <= 0) {
                     window.clearInterval(int);
                     window.location = 'https://www.thesimpleclub.de/kurs/544-datenstrukturen-video-87759';
@@ -108,7 +108,7 @@
         </div>
       </div>
     </main>
-    <div class="countdown hidden">In 3 Sekunden startet das nächste Video...</div>
+    <div class="countdown hidden">Nächstes Video in ... 3 Sekunden</div>
     <!-- Root element of PhotoSwipe. Must have class pswp. -->
     <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
 
