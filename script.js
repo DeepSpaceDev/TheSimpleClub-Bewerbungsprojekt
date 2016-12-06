@@ -25,42 +25,50 @@ var items = [
     {
         src: 'images/image001.jpeg',
         w: 600,
-        h: 400
+        h: 400,
+        timing: 23
     },
     {
         src: 'images/image002.jpeg',
         w: 600,
-        h: 400
+        h: 400,
+        timing: 54
     },
     {
         src: 'images/image003.jpeg',
         w: 600,
-        h: 400
+        h: 400,
+        timing: 62
     },
     {
         src: 'images/image004.jpeg',
         w: 600,
-        h: 400
+        h: 400,
+        timing: 101
     },
     {
         src: 'images/image005.jpeg',
         w: 600,
-        h: 400
+        h: 400,
+        timing: 126
     },
     {
         src: 'images/image006.jpeg',
         w: 600,
-        h: 400
+        h: 400,
+        timing: 146
     },
     {
         src: 'images/image007.jpeg',
         w: 600,
-        h: 400
+        h: 400,
+        timing: 175
     },
     {
         src: 'images/image008.jpeg',
         w: 600,
-        h: 400
+        h: 400,
+        timing: 234
     }
 ];
 
@@ -121,14 +129,20 @@ function onImageGalleryUp(e) {
 
 function onImageGalleryClick(e) {
   var children = [].slice.call(imageGallery.children);
-  var index = children.indexOf(e.target);
+  var index = children.indexOf(e.target.parentNode);
   if (hasScrolled) return;
-  // Initializes and opens PhotoSwipe
-  var pswp = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
-    index: index,
-    shareEl: false
-  });
-  pswp.init();
+  if (e.target.tagName === 'IMG') {
+    // Initializes and opens PhotoSwipe
+    var pswp = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
+      index: index,
+      shareEl: false
+    });
+    pswp.init();
+  } else if (e.target.tagName === 'I') {
+    console.log(e.target.tagName);
+    var timing = items[index].timing;
+    player.seekTo(timing, true);
+  }
 }
 
 // start init
