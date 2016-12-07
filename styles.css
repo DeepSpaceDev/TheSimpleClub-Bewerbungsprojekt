@@ -131,7 +131,7 @@ body .details .image-gallery .image-container {
   position: relative;
 }
 /*icon to jump to video part*/
-body .details .image-gallery .image-container i.jump-to-icon {
+body .details .image-gallery .image-container .jump-to-icon {
   color: #fff;
   position: absolute;
   top: 8px;
@@ -143,12 +143,15 @@ body .details .image-gallery .image-container i.jump-to-icon {
   -o-user-select: none;
   user-select: none;
 }
-body .details .image-gallery .image-container:hover i.jump-to-icon {
+body .details .image-gallery .image-container:hover .jump-to-icon {
   opacity: 1;
 }
 
+body .details .image-gallery .image-container .jump-to-icon:focus {
+  opacity: 1;
+}
 /*general styling for buttons*/
-button {
+button.fav {
   background-color: var(--primary-color);
   text-transform: uppercase;
   color: #fff;
@@ -160,6 +163,12 @@ button {
   box-shadow: var(--shadow-2dp);
   cursor: pointer;
 }
+
+button.pseudo {
+  border: none;
+  background: none;
+}
+
 /*youtube player on desktop*/
 #ytplayer{
 	height: 550px;
@@ -203,11 +212,11 @@ button {
     padding-right: 16px;
   }
 
-  body .details .image-gallery .image-container i.jump-to-icon {
+  body .details .image-gallery .image-container .jump-to-icon {
     opacity: 1;
   }
 
-  button {
+  button.fav {
     font-size: 16px;
   }
 }

@@ -130,6 +130,7 @@ function calulateImageScrollingMode() {
 function setUpHandlers() {
   imageGallery.addEventListener('mousedown', onImageGalleryDown); //desktop scrolling
   imageGallery.addEventListener('click', onImageGalleryClick); //image to fullscreen
+  imageGallery.addEventListener('keypress', onImageGalleryClick);
   window.addEventListener('resize', calulateImageScrollingMode); //incase of screen resize recalculations
 }
 
@@ -152,19 +153,22 @@ function onImageGalleryUp(e) {
 }
 //toggle fullscreen image view
 function onImageGalleryClick(e) {
+  if (e instanceof KeyboardEvent && !(e.key === ' ' || e.key === 'Enter'))
+    return;
   var children = [].slice.call(imageGallery.children);
   var index = children.indexOf(e.target.parentNode);
   //abort click if click was scrolling
   if (hasScrolled) return;
-  if (e.target.tagName === 'IMG') {
+  if (e.target.tagName === 'IMG' ||
+      e.target.firstElementChild.tagName === 'IMG') {
     // Initializes and opens PhotoSwipe
     var pswp = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
       index: index,
       shareEl: false
     });
     pswp.init();
-  } else if (e.target.tagName === 'I') {
-    console.log(e.target.tagName);
+  } else if (e.target.tagName === 'I' ||
+             e.target.firstElementChild.tagName === 'I') {
     var timing = items[index].timing;
     player.seekTo(timing, true);
   }
