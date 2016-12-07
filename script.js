@@ -10,17 +10,19 @@ var styles = ['background: #3f51b5',
     'padding: 10px',
     'font-family: "Source Code Pro", sans-serif',
     'font-size: 17px'
-	].join(';');
+  ].join(';');
 console.info("%c Copyright 2016 DeepSpace Development", styles);
 
+//vars
 var scrollingState = STATE_NOT_SCROLLING;
 var STATE_NOT_SCROLLING = 0;
 var STATE_SCROLLING = 1;
 var hasScrolled = false;
 
+var imageGallery = document.querySelector('.image-gallery');
 var pswpElement = document.querySelectorAll('.pswp')[0];
 
-// build items array
+// build items array (images)
 var items = [
     {
         src: 'images/image001.jpeg',
@@ -72,7 +74,6 @@ var items = [
     }
 ];
 
-var imageGallery = document.querySelector('.image-gallery');
 
 /* Start main javascript */
 //vars
@@ -86,6 +87,7 @@ function init(){
   calulateImageScrollingMode();
 }
 
+//set View Count via Youtube API
 function setViewCount(){
 	//Fetch polyfill via 'bower install fetch'
 	//https://github.com/github/fetch
@@ -115,7 +117,7 @@ function calulateImageScrollingMode() {
     var image = imageGallery.querySelector('img');
     var imageBounds = image.getBoundingClientRect();
     if ((mainBounds.height - youtubeBounds.height - infoHeight)
-          >= imageBounds.height * 1.5) {
+          >= imageBounds.height * 1.5 && mainBounds.width >= 1000) {
       imageGallery.classList.add('vertical-scrolling');
     } else {
       imageGallery.classList.remove('vertical-scrolling');
@@ -124,32 +126,35 @@ function calulateImageScrollingMode() {
   });
 }
 
+//register eventhandlers
 function setUpHandlers() {
-  imageGallery.addEventListener('mousedown', onImageGalleryDown);
-  imageGallery.addEventListener('click', onImageGalleryClick);
-  window.addEventListener('resize', calulateImageScrollingMode);
+  imageGallery.addEventListener('mousedown', onImageGalleryDown); //desktop scrolling
+  imageGallery.addEventListener('click', onImageGalleryClick); //image to fullscreen
+  window.addEventListener('resize', calulateImageScrollingMode); //incase of screen resize recalculations
 }
 
+//scrolling on desktop
 function onImageGalleryDown(e) {
   scrollingState = STATE_SCROLLING;
   hasScrolled = false;
   imageGallery.addEventListener('mousemove', onImageGalleryMove);
   window.addEventListener('mouseup', onImageGalleryUp, {once: true});
 }
-
+//move the image gallery on desktop
 function onImageGalleryMove(e) {
   var dX = e.movementX;
   if (Math.abs(dX) > 0) hasScrolled = true;
   imageGallery.scrollLeft -= dX;
 }
-
+//removal of desktop scrolling eventlistener
 function onImageGalleryUp(e) {
   imageGallery.removeEventListener('mousemove', onImageGalleryMove);
 }
-
+//toggle fullscreen image view
 function onImageGalleryClick(e) {
   var children = [].slice.call(imageGallery.children);
   var index = children.indexOf(e.target.parentNode);
+  //abort click if click was scrolling
   if (hasScrolled) return;
   if (e.target.tagName === 'IMG') {
     // Initializes and opens PhotoSwipe
