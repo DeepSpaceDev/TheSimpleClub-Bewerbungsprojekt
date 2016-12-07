@@ -81,7 +81,8 @@
                 var sec = 3;
                 var int = window.setInterval(function() {
                   sec--;
-                  countdown.textContent = `Nächstes Video in ... ${sec} Sekunden`;
+                  countdown.textContent =
+                    `Nächstes Video in ... ${sec} Sekunden`;
                   if (sec <= 0) {
                     window.clearInterval(int);
                     window.location = 'https://www.thesimpleclub.de/kurs/544-datenstrukturen-video-87759';
