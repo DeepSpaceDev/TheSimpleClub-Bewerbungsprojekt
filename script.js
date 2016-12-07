@@ -198,8 +198,8 @@ function onImageGalleryClick(e) {
   //abort click if click was scrolling
   if (hasScrolled) return;
   // If click/KeyboardEvent was performed on the image
-  if (e.target.tagName === 'IMG' ||
-      e.target.firstElementChild.tagName === 'IMG') {
+  if (e.target.tagName === 'IMG' || (e.target.firstElementChild &&
+      e.target.firstElementChild.tagName === 'IMG')) {
     // Initializes and opens PhotoSwipe
     var pswp = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
       index: index,
