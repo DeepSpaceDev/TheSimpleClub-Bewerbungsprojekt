@@ -168,6 +168,7 @@ button {
 	/* mobile */
 	#ytplayer{
 		width: 100vw;
+    height: 56.25vw;
 		padding: 0;
 	}
 
