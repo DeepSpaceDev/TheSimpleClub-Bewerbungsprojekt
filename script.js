@@ -157,6 +157,11 @@ function onImageGalleryClick(e) {
     return;
   var children = [].slice.call(imageGallery.children);
   var index = children.indexOf(e.target.parentNode);
+  // Check if the target's parentNode was not the `.image-container`
+  if (index === -1)
+    // The target's parentNode was the button
+    // So walk the DOM tree on node further up
+    index = children.indexOf(e.target.parentNode.parentNode);
   //abort click if click was scrolling
   if (hasScrolled) return;
   if (e.target.tagName === 'IMG' ||
