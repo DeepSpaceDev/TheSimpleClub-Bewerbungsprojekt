@@ -127,6 +127,7 @@ function calulateImageScrollingMode() {
 function setUpHandlers() {
   imageGallery.addEventListener('mousedown', onImageGalleryDown);
   imageGallery.addEventListener('click', onImageGalleryClick);
+  imageGallery.addEventListener('keypress', onImageGalleryClick);
   window.addEventListener('resize', calulateImageScrollingMode);
 }
 
@@ -148,18 +149,21 @@ function onImageGalleryUp(e) {
 }
 
 function onImageGalleryClick(e) {
+  if (e instanceof KeyboardEvent && !(e.key === ' ' || e.key === 'Enter'))
+    return;
   var children = [].slice.call(imageGallery.children);
   var index = children.indexOf(e.target.parentNode);
   if (hasScrolled) return;
-  if (e.target.tagName === 'IMG') {
+  if (e.target.tagName === 'IMG' ||
+      e.target.firstElementChild.tagName === 'IMG') {
     // Initializes and opens PhotoSwipe
     var pswp = new PhotoSwipe(pswpElement, PhotoSwipeUI_Default, items, {
       index: index,
       shareEl: false
     });
     pswp.init();
-  } else if (e.target.tagName === 'I') {
-    console.log(e.target.tagName);
+  } else if (e.target.tagName === 'I' ||
+             e.target.firstElementChild.tagName === 'I') {
     var timing = items[index].timing;
     player.seekTo(timing, true);
   }
