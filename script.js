@@ -24,50 +24,50 @@ var pswpElement = document.querySelectorAll('.pswp')[0];
 var items = [
     {
         src: 'images/image001.jpeg',
-        w: 600,
-        h: 400,
+        w: 1024,
+        h: 576,
         timing: 23
     },
     {
         src: 'images/image002.jpeg',
-        w: 600,
-        h: 400,
+        w: 1024,
+        h: 576,
         timing: 54
     },
     {
         src: 'images/image003.jpeg',
-        w: 600,
-        h: 400,
+        w: 1024,
+        h: 576,
         timing: 62
     },
     {
         src: 'images/image004.jpeg',
-        w: 600,
-        h: 400,
+        w: 1024,
+        h: 576,
         timing: 101
     },
     {
         src: 'images/image005.jpeg',
-        w: 600,
-        h: 400,
+        w: 1024,
+        h: 576,
         timing: 126
     },
     {
         src: 'images/image006.jpeg',
-        w: 600,
-        h: 400,
+        w: 1024,
+        h: 576,
         timing: 146
     },
     {
         src: 'images/image007.jpeg',
-        w: 600,
-        h: 400,
+        w: 1024,
+        h: 576,
         timing: 175
     },
     {
         src: 'images/image008.jpeg',
-        w: 600,
-        h: 400,
+        w: 1024,
+        h: 576,
         timing: 234
     }
 ];
