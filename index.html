@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>The SimpleClub</title>
+    <!-- prevent zoom on mobile -->
     <meta name="viewport"
       content="width=device-width,minimum-scale=1,initial-scale=1,user-scalable=yes">
     <link rel='shortcut icon' sizes='16x16' href='http://nx-s.akamaized.net/custom/tsc/assets/favicontsc.ico' type='image/x-icon'>
@@ -70,21 +71,24 @@
                 modestbranding: 1, //no youtube logo
                 rel: 0, //no videos reccomendations
                 showinfo: 0, //don't display infos such as video title
-                enablejsapi: 1
+                enablejsapi: 1 //Enable JavaScript functionality
               }
 
             });
+            // Listener for video player state
             player.addEventListener('onStateChange', function(e) {
               if (e.data === YT.PlayerState.ENDED) {
-                // Show next video count down
+                // Show next video countdown
                 var countdown = document.querySelector('.countdown');
                 countdown.classList.remove('hidden');
+                // Start js countdown for updating text in html element
                 var sec = 3;
                 var int = window.setInterval(function() {
                   sec--;
                   countdown.textContent =
                     `Nächstes Video in ... ${sec} Sekunden`;
                   if (sec <= 0) {
+                    // Clear interval and go to next video
                     window.clearInterval(int);
                     window.location = 'https://www.thesimpleclub.de/kurs/544-datenstrukturen-video-87759';
                   }
@@ -102,6 +106,7 @@
           <div class="view-count"></div>
           <button class="fav" onclick="alert('Comming soon')">Favorisieren</button>
         </div>
+        <!--Start [image-gallery]-->
         <div class="image-gallery">
           <div class="image-container">
             <button class="pseudo">
@@ -168,8 +173,10 @@
             </button>
           </div>
         </div>
+        <!--End [image-gallery]-->
       </div>
     </main>
+    <!-- Countdown for next video; Initially hidden -->
     <div class="countdown hidden">Nächstes Video in ... 3 Sekunden</div>
     <!-- Root element of PhotoSwipe. Must have class pswp. -->
     <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
