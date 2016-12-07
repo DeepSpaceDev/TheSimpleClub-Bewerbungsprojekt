@@ -217,3 +217,8 @@ button {
     margin: 0 8px;
   }
 }
+
+body .details .image-gallery.vertical-scrolling {
+  flex-wrap: wrap;
+  justify-content: center;
+}

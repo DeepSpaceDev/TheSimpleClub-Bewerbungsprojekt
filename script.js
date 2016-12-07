@@ -83,6 +83,7 @@ var apiKey = "AIzaSyAzH9gS5uv6jhzeSMp4oGtMrlxH2id_JtE";
 function init(){
 	setViewCount();
   setUpHandlers();
+  calulateImageScrollingMode();
 }
 
 function setViewCount(){
@@ -105,9 +106,28 @@ function setViewCount(){
 		});
 }
 
+function calulateImageScrollingMode() {
+  new Promise(function(resolve) {
+    var mainBounds = document.querySelector('main').getBoundingClientRect();
+    var youtubeBounds = document.querySelector('main .yt-container')
+      .getBoundingClientRect();
+    var infoHeight = 86;
+    var image = imageGallery.querySelector('img');
+    var imageBounds = image.getBoundingClientRect();
+    if ((mainBounds.height - youtubeBounds.height - infoHeight)
+          >= imageBounds.height * 1.5) {
+      imageGallery.classList.add('vertical-scrolling');
+    } else {
+      imageGallery.classList.remove('vertical-scrolling');
+    }
+    resolve();
+  });
+}
+
 function setUpHandlers() {
   imageGallery.addEventListener('mousedown', onImageGalleryDown);
   imageGallery.addEventListener('click', onImageGalleryClick);
+  window.addEventListener('resize', calulateImageScrollingMode);
 }
 
 function onImageGalleryDown(e) {
