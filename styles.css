@@ -131,6 +131,11 @@ body .details .image-gallery .image-container i.jump-to-icon {
   top: 8px;
   right: 16px;
   opacity: 0;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -o-user-select: none;
+  user-select: none;
 }
 
 body .details .image-gallery .image-container:hover i.jump-to-icon {
