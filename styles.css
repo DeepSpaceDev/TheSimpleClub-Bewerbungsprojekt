@@ -170,7 +170,7 @@ button.pseudo {
 }
 
 /*youtube player on desktop*/
-#ytplayer{
+#ytplayer {
 	height: 550px;
 	width: 978px;
 }
@@ -179,8 +179,8 @@ button.pseudo {
 @media only screen and (max-width: 1100px) {
 	/* mobile */
 
-  /*aspect ratio 16:9*/;
-	#ytplayer{
+  /*aspect ratio 16:9*/
+	#ytplayer {
 		width: 100vw;
     height: 56.25vw; /*vw to use ar!*/
 		padding: 0;
